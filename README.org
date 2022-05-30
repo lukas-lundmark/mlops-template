@@ -23,6 +23,12 @@ conda activate mlopspython
 ** Azure CLI and Azure ML
 Read the instructions [[https://github.com/lukas-lundmark/mlops-masterclass/blob/main/setup-azure.org][here]] for how to setup and configure Azure and Azure ML
 
+** Docker
+You will need docker installed to run experiments and build deployments.
+Go to https://docs.docker.com/get-docker/ and follow the instructions.
+
+If you are unfamiliar with docker you can read the absolute basics [[https://github.com/lukas-lundmark/mlops-masterclass/blob/main/docker.org][here]].
+
 ** Downloading Data
 Run the download data script from within the data directory which will download the training and test dataset for you.
 
