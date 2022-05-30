@@ -21,7 +21,7 @@ conda activate mlopspython
 #+end_src
 
 ** Azure CLI and Azure ML
-Read the instructions [[https://github.com/lukas-lundmark/mlops-masterclass/blob/main/setup-azure.org][here]] for how to setup and configure Azure and Azure ML
+Read the instructions [[https://github.com/lukas-lundmark/mlops-masterclass/blob/main/setup-azure.org][here]] for how to setup and configure Azure and Azure ML. After you have created your workspace, you should download the config.json object from the portal and save it to the root of this repo.
 
 ** Docker
 You will need docker installed to run experiments and build deployments.
@@ -37,8 +37,31 @@ cd data
 sh ./download-data.sh
 #+end_src
 
-** Starting a notebook server
-You should start by inspecting the default notebook
+* Experiment Tracking
+You should start by inspecting the default notebook and modifying it to use proper experiment tracking
+Start a notebook using command
 #+begin_src bash
 jupyter notebook
 #+end_src
+and open the notebook in your browser or editor of choice.
+
+
+* Webservices
+This repo contains a few utilities to help you get started with deploying your models.
+
+There exists a dummy scoring script in ~src/deploy/score.py~ and a very basic packaging script in ~ml_pipelines/deploy/package_service.py~. You can use them already, but they don't package any model (yet) so they aren't really useful.
+
+Run the script and follow the instructions for how to build your docker image
+#+begin_src bash
+python ml_pipelines/deploy/package_service.py
+#+end_src
+
+There is a utility script ~send_request.py~ that you can use to send simple requests to your services. E.g.,
+#+begin_src bash
+python send_request.py --url http://localhost:6789/score --source-file data/diamonds-test.csv --n 10
+#+end_src
+which will send 10 records to your local service from the file data/diamonds-test.csv. Use this to test you different services.
+
+There also exists a utility module in ~ml_pipelines/utils.py~ that defines some useful classes and functions for managing AML.
+
+Use these tools to build a proper machine learning service.
