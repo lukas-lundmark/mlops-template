@@ -53,7 +53,7 @@ There exists a dummy scoring script in ~src/deploy/score.py~ and a very basic pa
 
 Run the script and follow the instructions for how to build your docker image
 #+begin_src bash
-python ml_pipelines/deploy/package_service.py
+python -m ml_pipelines.deploy.package_service.py
 #+end_src
 
 There is a utility script ~send_request.py~ that you can use to send simple requests to your services. E.g.,

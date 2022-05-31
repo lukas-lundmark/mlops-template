@@ -14,14 +14,16 @@ inference_config = InferenceConfig(
 )
 
 # No model here yet!!!
-package = Model.package(workspace, models=[], inference_config=inference_config, generate_dockerfile=True)
+package = Model.package(
+    workspace, models=[], inference_config=inference_config, generate_dockerfile=True
+)
 package.wait_for_creation(show_output=True)
 
 # Save the dockerfile and related resources here
 package.save("./imagefiles")
 
 # Get the Azure container registry that the model/Dockerfile uses.
-acr=package.get_container_registry()
+acr = package.get_container_registry()
 
 # Give the user info on how they can build the service locally
 info_string = f"""
